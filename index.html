@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <div class="heading"><h3>Analysis of Probabilistic Decision Tables</h3>
+   <p>     The analysis of the probabilistic decision tables involves inter-attribute depen <br>dency analysis, identification and elimination of redundant attributes, and attribute<br>
+        significance analysis (Ziarko, 1999)</p><br>
+    <div><h4>Attribute Dependency Analysis</h4></div>
+    <p>The original rough sets model-based analysis involves detection of functional, or<br>
+        partial functional dependencies, and subsequent dependency-preserving reduction of<br>
+        attributes. In VPRSM, (l, u)-probabilistic dependency is a subject of analysis. The (l,<br>
+        u)-probabilistic dependency is a generalization of partial-functional dependency.<br>
+        The (l, u)-probabilistic dependency γl,u<br>
+        (C, d, v) between attributes C and the<br>
+        decision d specifying the target set X of objects with the value v of the attribute d is<br>
+        defined as the total probability of (l, u)-positive and (l, u)-negative approximation regions<br>
+        of the set X. In other words,</p>
+        <h4>γl,u
+            (C, d, v) = P(POSu
+            (X) ∪ NEGl
+            (X)).</h4>
+            <p>The dependency degree can be interpreted as a measure of the probability that a<br>
+                randomly occurring object will be represented by such a combination of attribute values<br>
+                that the prediction of the corresponding value of the decision, or of its complement, could<br>
+                be done with the acceptable confidence. That is, the prediction that the object is a member<br>
+                of set X could be made with probability not less than u, and the prediction that the object<br>
+                is not the member of X could be made with probability not less than 1 – l. The lower and<br>
+                upper limits define acceptable probability bounds for predicting whether an object is or<br>
+                is not the member of the target set X. If (l, u)-dependency is less than one, it means that<br>
+                the information contained in the table is not sufficient to make either positiveor negative<br>
+                prediction in some cases.</p>
+                <p>For example, the (0.1, 0.8)-dependency between C = {Home, Boat, Credit, Age} and<br>
+                    Income = low is 0.95. It means that in 95% of new cases, we will be able to make the<br>
+                    determination with confidence of at least 0.8 that an object is member of the set X or of<br>
+                    its complement U – X. In cases when the complement is decided, the decision confidence<br>
+                    would be at least 0.9</p>
+                    <h2>Reduction of Attributes</h2>
+                    <p>One of the important aspects in the analysis of decision tables extracted from data<br>
+                        is the elimination of redundant attributes and identification of the most important<br>
+                        attributes. By redundant attributes, we mean any attributes that could be eliminated<br>
+                        without negatively affecting the dependency degree between remaining attributes and<br>
+                        the decision. The minimum subset of attributes preserving the dependency degree is<br>
+                        termed reduct. In the context of VPRSM, the original notion of reduct is generalized to<br>
+                        accommodate the (l, u)-probabilistic dependency among attributes. The generalized (l,<br>
+                        u)-reduct of attributes, REDl,u
+                        (C, d, v) ⊆ C is defined as follows:<br>
+                        1. γl,u(REDl,u
+                        (C, d, v), d, v) ≥ γl,u(C, d, v);<br>
+                        2. For every attribute a belonging to the reduct REDl,u
+                        (C, d, v) the following relation<br>
+                        holds: γl,u(REDl,u
+                        (C, d, v), d, v) > γl,u(REDl,u
+                        (C, d, v) – {a}, d, v</p><br>
+                        
+                            <h5>Grzymala-Busse & Ziarko</h5>
+                            <p>The first condition imposes the dependency preservation requirement according<br>
+                                to which the dependency between target set X and the reduct attributes should not be<br>
+                                less than the dependency between the target set C of all attributes.<br>
+                                The second condition imposes the minimum size requirement according to which<br>
+                                no attribute can be eliminated from the reduct without reducing the degree of depen<br>dency.<br>
+                                For example, one (l, u)-reduct of attributes in Table 4 is {Home, Boat, Credit}. The<br>
+                                decision table reduced to these three attributes will have the same predictive accuracy<br>
+                                as the original Table 4. In general , a number of possible reducts can be computed, leading<br>
+                                to alternative minimal representations of the relationship between attributes and the<br>
+                                decision</p>
+                                <div><h3>Analysis of Significance of Condition Attributes</h3></div>
+                                <p>etermination of the most important factors in a relationship between groups of<br>
+                                    attributes is one of the objectives of factor analysis in statistics. The factor analysis is<br>
+                                    based on strong assumptions regarding the form of probability distributions, and<br>
+                                    therefore is not applicable to many practical problems. The theory of rough sets has<br>
+                                    introduced a set of techniques that help in identifying the most important attributes<br>
+                                    without any additional assumptions. These techniques are based on the concepts of<br>
+                                    attribute significance factor and of a core set of attributes. The significance factor of<br>
+                                    an attribute a is defined as the relative decrease of dependency between attributes and<br>
+                                    the decision caused by the elimination of the attribute a. The core set of attributes is the<br>
+                                    intersection of all reducts; that is, it is the set of attributes that would never be eliminated<br>
+                                    in the process of reduct computation. Both of these definitions cannot be applied if the<br>
+                                    nature of the practical problem excludes the presence of functional or partial functional<br>
+                                    dependencies. However, as with other basic notions of rough set theory, they can be<br>
+                                    generalized in the context of VPRSM to make them applicable to non-deterministic data<br>
+                                    analysis problems. In what follows, the generalized notions of attribute significance<br>
+                                    factor and core are defined and illustrated with examples.<br>
+                                    The (l, u)-significance, SIGl,u<br>
+                                    (a) of an attribute a belonging to a reduct of the<br>
+                                    collection of attributes C can be obtained by calculating the relative degree of depen<br>dency decrease caused by the elimination of the attribute a from the reduct:</p>
+
+                            <img src="pages.jpg" alt="">  
+                                           <p>For instance, the (0.1, 0.8)-dependency between reduct {Home, Boat, Credit} and<br>
+                                            Income = low is 0.95. It can be verified that after elimination of the attribute Credit the<br>
+                                            dependency decreases to 0.4. Consequently, the (0.1, 0.8)-significance of the attribute<br>
+                                            Credit in the reduct {Home, Boat, Credit} is</p>
+                                            <img src="pages1.jpg" alt="">
+                                            <p>Similarly, the (0.1, 0.8)-significance can be computed for other reduct attributes</p>
+                                            <br>
+                                            <p>The set of the most important attributes, that is, those that would be included in<br>
+                                                every reduct, is called core set of attributes (Pawlak, 1982). In VPRSM, the generalized<br>
+                                                notion of (l, u)-core has been introduced. It is defined exactly the same way as in the<br>
+                                                original rough set model, except that the definition requires that the (l, u)-core set of<br>
+                                                attributes be included in every (l, u)-reduct. It can be proven that the core set of attributes<br>
+                                                COREl,u<br>
+                                                (C, d, v), the intersection of all CLOSE UP THIS SPACE (l, u)-reducts, satisfies<br>
+                                                the following property:</p>
+                                                <h3>COREl,u
+                                                    (C, d, v) = {a ∈ C : γl,u
+                                                    (C, d, v) – γl,u
+                                                    (C – {a}, d, v) > 0 }.</h3>
+                                                    <p>The above property leads to a simple method for calculating the core attributes. To<br>
+                                                        test whether an attribute belongs to core, the method involves temporarily eliminating<br>
+                                                        the attribute from the set of attributes and checking if dependency decreased. If<br>
+                                                        dependency did not decrease, the attribute is not in the core; otherwise, it is one of the<br>
+                                                        core attributes.</p>
+                                                        <p>For example, it can be verified by using the above testing procedure that the core<br>
+                                                            attributes of the decision table given in Table 4 are Home and Boat. These attributes will<br>
+                                                            be included in all (0.1, 0.8)-reducts of the Table 4, which means that they are essential<br>
+                                                            for preservation of the prediction accuracy</p>
+                                                            <h3>Identification of Minimal Rules</h3>
+                                                            <p>During the course of rough set-related research, considerable effort was put into<br>
+                                                                development of algorithms for computing minimal rules from decision tables. From a data<br>
+                                                                mining perspective, the rules reflect persistent data patterns representing potentially<br>
+                                                                interesting relations existing between data items. Initially, the focus of the rule<br>
+                                                                acquisition algorithms was on identification of deterministic rules, that is, rules with<br>
+                                                                unique conclusion, and possibilistic rules, that is, rules with an alternative of possible<br>
+                                                                conclusions. More recently, computation of uncertain rules with associated probabilis<br>tic certainty factors became of interest, mostly inspired by practical problems existing in<br>
+                                                                the area of data mining where deterministic data relations are rare. In particular, VPRSM<br>
+                                                                is directly applicable to computation of uncertain rules with probabilistic confidence<br>
+                                                                factors. The computation of uncertain rules in VPRSM is essentially using standard<br>
+                                                                rough-set methodology and algorithms involving computation of global coverings, local<br>
+                                                                coverings, or decision matrices (Ziarko & Shan, 1996). The major difference is in the<br>
+                                                                earlier steps of bringing the set of data to the probabilistic decision table form, as<br>
+                                                                described earlier in this chapter. The probabilistic decision table provides an input to<br>
+                                                                the rule computation algorithm. It also provides necessary probabilistic information to<br>
+                                                                associate conditional probability estimates and rule probability estimates with the<br>
+                                                                computed rules.</p><br>
+                                                                <p>For example, based on the probabilistic decision table given in Table 4, one can<br>
+                                                                    identify the deterministic rules by using standard rough-set techniques (see Figure 1).</p>
+                                                                    <p>Based on the probabilistic information contained in Table 4, one can associate<br>
+                                                                        probabilities and conditional probabilities with the rules. Also, the rough region<br>
+                                                                        designations can be translated to reflect the real meaning of the decision, in this case<br>
+                                                                        Income = low. The resulting uncertain rules are presented in Figure 2.
+                                                                        </p>
+                                                                        <h4>Figure 1: Rule set.</h4>
+                                                                        <div class="Table"><p>(Home, cheap) -> (Rough Region, POS),<br>
+                                                                            (Home, expensive) & (Age, old) -> (Rough Region, NEG),<br>
+                                                                            (Home, expensive) & (Age, young) -> (Rough Region, POS),<br>
+                                                                            (Home, middle) & (Age, young) -> (Rough Region, POS).</p></div>
+                                                                            <h4>Figure 2: Rule set.</h4>
+                                                                            <div class="Table1"><p>(Home, cheap) -> (Income, low) with conditional probability = 1.0 and strength<br>
+                                                                                = 0.01,<br>
+                                                                                (Home, expensive) & (Age, old) -> (Income, not low) with conditional probability<br>
+                                                                                = 0.9 and probability = 0.15,<br>
+                                                                                (Home, expensive) & (Age, young) -> (Income, low) with conditional probability<br>
+                                                                                = 0.91 and probability = 0.15,<br>
+                                                                                (Home, middle) & (Age, young) -> (Income, low) with conditional probability =<br>
+                                                                                0.92and probability = 0.15</p>
+                                                                         </div><div>
+                                                                            <p>All of the above rules have their conditional probabilities within the acceptability<br>
+                                                                                limits, as expressed by the parameters l = 0.1 and u = 0.8. The rules for the boundary area<br>
+                                                                                are not shown here since they do not meet the acceptability criteria</p>
+                                                                                <p>Some algorithms for rule acquisition within the framework of VPRSM have been<br>
+                                                                                    implemented in the commercial system DataLogic and in the system KDD-R (Ziarko,<br>
+                                                                                    1998b). A comprehensive new system incorporating the newest developments in the<br>
+                                                                                    rough set area is currently being implemented.</p>
+                                                                                    <center><h2>DATA MINING SYSTEM LERS</h2></center>
+                                                                                    <p>The rule induction system, called Learning from Examples using Rough Sets (LERS),<br>
+                                                                                        was developed at the University of Kansas. The first implementation of LERS was done<br>
+                                                                                        in Franz Lisp in 1988.</p>
+                                                                                        <p>The current version of LERS, implemented in C and C++, contains a variety of data<br>mining tools. LERS is equipped with the set of discretization algorithms<br> to deal with
+                                                                                            numerical attributes. Discretization is an art rather than a science, so many methods<br>
+                                                                                            should be tried for a specific data set. Similarly, a variety of methods may help to handle<br>
+                                                                                            missing attribute values. On the other hand, LERS has a unique way to work with<br>
+                                                                                            inconsistent data, following rough set theory. If a data set is inconsistent, LERS will<br>
+                                                                                            always compute lower and upper approximations for every concept, and then will<br>
+                                                                                            compute certain and possible rules, respectively.</p>
+                                                                                            <p>The user of the LERS system may use four main methods of rule induction: two<br>
+                                                                                                methods of machine learning from examples (called LEM1 and LEM2; LEM stands for<br>
+                                                                                                Learning from Examples Module) and two methods of knowledge acquisition (called All</p>
+                                                                                                <h4>Table 5: Input data for LERS</h4>
+
+                                                                                                <div><p>< a a a a d ></a></p>
+                                                                                                    <table  class="tab" cellpadding="10" cellspacing="5" >
+                                                                                                        <th>Home</th><th>Boat</th><th>Credit_Card</th><th>Age</th><th>Loan_Application</th>
+                                                                                                        <tr><td>expensive</td><td>no</td><td>yes</td><td>did</td><td>approved</td></tr>
+                                                                                                        <tr><td>middle</td><td>yes</td><td>no</td><td>did</td><td> rejected</td></tr>
+                                                                                                        <tr><td>expensive</td><td>yes</td><td>no</td><td>did</td><td>approved</td></tr>
+                                                                                                        <tr><td>cheap</td><td>yes</td><td>yes</td><td> young</td><td> rejected</td></tr>
+                                                                                                        <tr><td>middle</td><td>yes</td><td>yes</td><td>middle</td><td>approved</td></tr>
+                                                                                                        <tr><td>middle</td><td>no</td><td>no</td><td>did</td><td> rejected</td></tr>
+                                                                                                        <tr><td>middle</td><td>no</td><td>yes</td><td> young</td><td>approved</td></tr>
+                                                                                                        <tr><td>expensive</td><td>no</td><td>no</td><td> young</td><td> rejected</td></tr>
+                                                                                                        <tr><td>expensive</td><td>no</td><td>no</td><td> young</td><td>approved</td></tr>
+                                                                                                        
+                                                                                                    </table>
+                                                                                                    <br>
+                                                                                                    <p>Global Coverings and All Rules). Two of these methods are global (LEM1 and All Global<br>
+                                                                                                        Coverings); the remaining two are local (LEM2 and All Rules).<br>
+                                                                                                        Input data file is presented to LERS in the form illustrated in Table 5. In this table,<br>
+                                                                                                        the first line (any line does not need to be one physical line—it may contain a few physical<br>
+                                                                                                        lines) contains declaration of variables: a stands for an attribute, d for decision, x means<br>
+                                                                                                        “ignore this variable.” The list of these symbols starts with “<” and ends with “>”. The<br>
+                                                                                                        second line contains declaration of the names of all variables, attributes, and decisions,<br>
+                                                                                                        surrounded by brackets. The following lines contain values of all variables</p>
+                                                                                                        <h3>LEM1—Single Global Covering</h3>
+                                                                                                        <p>In this option, LERS may or may not take into account priorities associated with<br>
+                                                                                                            attributes and provided by the user. For example, in a medical domain, some tests<br>
+                                                                                                            (attributes) may be dangerous for a patient. Also, some tests may be very expensive,<br>
+                                                                                                            while—at the same time—the same decision may be made using less expensive tests.<br>
+                                                                                                            LERS computes a single global covering using the following algorithm:</p>
+                                                                                                            <p>Algorithm SINGLE GLOBAL COVERING<br>
+                                                                                                                Input: A decision table with set A of all attributes and decision d;<br>
+                                                                                                                Output: a single global covering R;<br>
+                                                                                                                begin<br>
+                                                                                                                compute partition U/IND(A);<br>
+                                                                                                                P : = A;<br>
+                                                                                                                R := Ø</p>
+                                                                                        </div>
+
+                                                                         </div>
+</div>
+</body>
+</html>
